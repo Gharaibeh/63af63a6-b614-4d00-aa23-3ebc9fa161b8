@@ -8,55 +8,60 @@ namespace ConsoleApp1
 {
     public class FrequentArray
     {
-        public void findLongest(int[] numArray)
+        List<int> CustomDictionary2;
+        List<Tuple<int, int>> CustomDictionary;
+
+        public FrequentArray()
         {
-            List<Tuple<int, int>> CustomDictionary = new List<Tuple<int, int>>();
-            List<int> CustomDictionary2 = new List<int>();
+            InitializeComponents();
+        }
+
+        private void InitializeComponents()
+        {
+            CustomDictionary = new List<Tuple<int, int>>();
+            CustomDictionary2 = new List<int>();
+        }
+        public int[] findCommonArray(int[] numArray)
+        {
+            findFrequencies(numArray);
+            collectingMostFrequentNumbers(findLargestIndex());
+
+            return CustomDictionary2.ToArray();
+        }
+
+        private void findFrequencies(int[] numArray)
+        {
+            if (numArray.Length == 0)
+            {
+                throw new Exception("Input array is Zero!");
+            }
 
             foreach (int num in numArray)
             {
                 CustomDictionary.Add(new Tuple<int, int>(num, numArray.Count(x => x == num)));
             }
-             
-            foreach (var pair in CustomDictionary)
-            {
-                Console.WriteLine("FOREACH VAR: {0}, {1}", pair.Item1, pair.Item2);
-            }
+        }
 
+        private int findLargestIndex()
+        {
             int maxAt = 0;
-            
             for (int i = 0; i < CustomDictionary.Count; i++)
             {
                 maxAt = CustomDictionary[i].Item2 > CustomDictionary[maxAt].Item2 ? i : maxAt;
             }
-
-            Console.WriteLine("largest inpuit at " + maxAt);
-            int Num = CustomDictionary[maxAt].Item1;
-            int Freq = CustomDictionary[maxAt].Item2;
+            return maxAt;
+        }
 
 
+        private void collectingMostFrequentNumbers(int maxAt)
+        {
             for (int i = 0; i < CustomDictionary.Count; i++)
             {
-                if(CustomDictionary[i].Item2 == Freq)
+                if (CustomDictionary[i].Item2 == CustomDictionary[maxAt].Item2)
                     CustomDictionary2.Add(CustomDictionary[i].Item1);
-
             }
-
-
-            foreach (var pair in CustomDictionary2)
-            {
-                Console.WriteLine("FOREACH VAR: {0} ", pair);
-            }
+            //removing duplicates
             CustomDictionary2 = CustomDictionary2.Distinct().ToList();
-
-            foreach (var pair in CustomDictionary2)
-            {
-                Console.WriteLine("----FOREACH VAR: {0} ", pair);
-            }
-
-
-
-
 
         }
     }
