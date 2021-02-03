@@ -11,16 +11,27 @@ namespace ConsoleApp1
         List<int> filteredResults;
         List<Tuple<int, int>> CustomDictionary;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public FrequentArray()
         {
             InitializeComponents();
         }
 
+        /// <summary>
+        /// Initializer
+        /// </summary>
         private void InitializeComponents()
         {
             CustomDictionary = new List<Tuple<int, int>>();
             filteredResults = new List<int>();
         }
+        /// <summary>
+        /// Return the most common frequent numbers
+        /// </summary>
+        /// <param name="numArray"></param>
+        /// <returns></returns>
         public int[] findCommonArray(int[] numArray)
         {
             findFrequencies(numArray);
@@ -29,6 +40,10 @@ namespace ConsoleApp1
             return filteredResults.ToArray();
         }
 
+        /// <summary>
+        /// Find Freq for each elements
+        /// </summary>
+        /// <param name="numArray"></param>
         private void findFrequencies(int[] numArray)
         {
             if (numArray.Length == 0)
@@ -42,6 +57,10 @@ namespace ConsoleApp1
             }
         }
 
+        /// <summary>
+        /// Find largest input 
+        /// </summary>
+        /// <returns></returns>
         private int findLargestIndex()
         {
             int maxAt = 0;
@@ -52,7 +71,10 @@ namespace ConsoleApp1
             return maxAt;
         }
 
-
+        /// <summary>
+        /// Adding elements to list
+        /// </summary>
+        /// <param name="maxAt"></param>
         private void collectingMostFrequentNumbers(int maxAt)
         {
             for (int i = 0; i < CustomDictionary.Count; i++)

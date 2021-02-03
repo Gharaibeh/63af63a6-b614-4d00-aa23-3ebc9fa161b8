@@ -12,13 +12,16 @@ namespace ConsoleApp1
         {
             FrequentArray freq = new FrequentArray();
 
-            int[] arr = new int[] { 1, 5, 4, 3, 2, 4, 5, 1, 6, 1, 2, 5, 4 };
-            //int[] arr = new int[] { 1, 2, 3, 4, 5, 1, 6, 7 };
+            int[] arr = new int[] {  5, 4, 3, 2, 4, 5, 1, 6, 1, 2, 5, 4 };
             printResult(freq.findCommonArray(arr));
             Console.ReadLine();
 
         }
 
+        /// <summary>
+        /// Print results
+        /// </summary>
+        /// <param name="output"></param>
         static void printResult(int[] output)
         {
             Console.WriteLine("Most freq elements are:\n");
