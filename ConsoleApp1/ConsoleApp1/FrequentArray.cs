@@ -8,7 +8,7 @@ namespace ConsoleApp1
 {
     public class FrequentArray
     {
-        List<int> CustomDictionary2;
+        List<int> filteredResults;
         List<Tuple<int, int>> CustomDictionary;
 
         public FrequentArray()
@@ -19,14 +19,14 @@ namespace ConsoleApp1
         private void InitializeComponents()
         {
             CustomDictionary = new List<Tuple<int, int>>();
-            CustomDictionary2 = new List<int>();
+            filteredResults = new List<int>();
         }
         public int[] findCommonArray(int[] numArray)
         {
             findFrequencies(numArray);
             collectingMostFrequentNumbers(findLargestIndex());
 
-            return CustomDictionary2.ToArray();
+            return filteredResults.ToArray();
         }
 
         private void findFrequencies(int[] numArray)
@@ -58,10 +58,10 @@ namespace ConsoleApp1
             for (int i = 0; i < CustomDictionary.Count; i++)
             {
                 if (CustomDictionary[i].Item2 == CustomDictionary[maxAt].Item2)
-                    CustomDictionary2.Add(CustomDictionary[i].Item1);
+                    filteredResults.Add(CustomDictionary[i].Item1);
             }
             //removing duplicates
-            CustomDictionary2 = CustomDictionary2.Distinct().ToList();
+            filteredResults = filteredResults.Distinct().ToList();
 
         }
     }

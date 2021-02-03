@@ -22,8 +22,8 @@ namespace ConsoleApp1
         static void printResult(int[] output)
         {
             Console.WriteLine("Most freq elements are:\n");
-            foreach (int x in output)
-                Console.WriteLine(x);
+            foreach (int element in output)
+                Console.WriteLine(element);
         }
     }
 }
