@@ -62,5 +62,13 @@ namespace UnitTestProject1
             CollectionAssert.AreEquivalent(result, new int[] { 1, 2, 3, 4, 5, 6, 7 });
 
         }
+
+        [TestMethod]
+        public void TestMethod07()
+        {
+            FrequentArray freq = new FrequentArray();
+            var ex = Assert.ThrowsException<Exception>(() => freq.findCommonArray(new int[] { }));
+            Assert.AreSame(ex.Message, "Input array is Zero!");
+        }
     }
 }
